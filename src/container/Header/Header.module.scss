@@ -1,0 +1,63 @@
+@import '../../styles/variables.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 8rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06);
+  position: fixed;
+  background-color: $white;
+  width: 100%;
+  z-index: 99;
+}
+.logoBox {
+  width: 14rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .logo {
+    width: calcWidth(11.6rem, 14rem);
+  }
+}
+
+@media (max-width: $pad) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    height: 8rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06);
+    position: fixed;
+    background-color: $white;
+    width: 100%;
+  }
+  .logoBox {
+    width: 18.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo {
+      width: calcWidth(11.4rem, 18.2rem);
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    height: 7.2rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06);
+    position: fixed;
+    background-color: $white;
+    width: 100%;
+  }
+  .logoBox {
+    width: 10.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo {
+      width: calcWidth(7.2rem, 10.2rem);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.homeBox {
+  padding-top: 8rem;
+}
+.navigator {
+  width: 10%;
+  background-color: red;
+  height: calc(100vh - 8rem);
+  position: fixed;
+  // a {
+  //   display: block;
+  //   width: 100%;
+  // }
+}
+.NewsPage {
+  width: 90%;
+  padding: 20px;
+  margin-left: 10%;
+  height: calc(800vh - 8rem);
+}

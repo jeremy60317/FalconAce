@@ -1,0 +1,20 @@
+@import '../../styles/variables.scss';
+
+.navigator {
+  padding-top: 8rem;
+  width: 10%;
+  // background-color: red;
+  height: calc(100vh - 8rem);
+  position: fixed;
+  border-right: 1px solid gray;
+  .navItem {
+    padding: 10px;
+    &:first-child {
+      padding-top: 20px;
+    }
+  }
+  // a {
+  //   display: block;
+  //   width: 100%;
+  // }
+}

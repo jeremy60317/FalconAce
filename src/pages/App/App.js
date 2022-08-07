@@ -36,7 +36,7 @@ function App() {
     <Layout>
       <Header />
       <div>
-        <Nav></Nav>
+        <Nav />
         <Routes>
           <Route
             index
@@ -67,7 +67,6 @@ function App() {
         </Routes>
       </div>
       <Footer />
-      {/* <Modal open={openModal}></Modal> */}
     </Layout>
   )
 }

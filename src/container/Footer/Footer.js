@@ -16,7 +16,9 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.urlBox}>
         {footerArray.map((itm) => (
-          <a href={itm.url}>{itm.title}</a>
+          <a href={itm.url} key={itm.title}>
+            {itm.title}
+          </a>
         ))}
       </div>
       <div className={styles.copyright}>© {year} Microsoft</div>

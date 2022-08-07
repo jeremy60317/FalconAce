@@ -4,17 +4,39 @@
   padding-top: 8rem;
   width: 10%;
   // background-color: red;
-  height: calc(100vh - 8rem);
+  height: 100vh;
   position: fixed;
-  border-right: 1px solid gray;
+  // border-right: 1px solid gray;
+  box-sizing: border-box;
   .navItem {
-    padding: 10px;
+    margin: 10px;
+    display: flex;
+    width: 60%;
+    padding: 5px 10px;
+    border-radius: 20px;
+    img {
+      padding-right: 10px;
+    }
+    &.click {
+      color: white;
+      background-color: #3478bc;
+    }
     &:first-child {
-      padding-top: 20px;
+      margin-top: 20px;
     }
   }
-  // a {
-  //   display: block;
-  //   width: 100%;
-  // }
+}
+
+@media (max-width: 1400px) {
+  .navigator {
+    .navItem {
+      padding: 5px 5px;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      div {
+        display: none;
+      }
+    }
+  }
 }

@@ -1,12 +1,15 @@
-import { useSelector } from 'react-redux'
-import { Route, Routes } from 'react-router-dom'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './Navigator.module.scss'
 import navObj from '../../utils/navObject'
-console.log('navObj', navObj)
 
 const Navigator = (type) => {
+  const [clickType, setClickType] = useState('')
   let navigate = useNavigate()
+  function onClickNav(key, urlTo) {
+    setClickType(key)
+    toPageType(urlTo)
+  }
   function toPageType(type = '') {
     navigate(`/${type}`)
   }
@@ -14,10 +17,14 @@ const Navigator = (type) => {
     <div className={styles.navigator}>
       {Object.entries(navObj).map(([key, value], idx) => (
         <div
-          className={styles.navItem}
-          onClick={() => toPageType(`${value.urlTo}`)}
+          className={`${styles.navItem} ${
+            clickType === key ? styles.click : ''
+          }`}
+          key={value.title}
+          onClick={() => onClickNav(key, `${value.urlTo}`)}
         >
-          {value.title}
+          <img src={clickType === key ? value.svg_w : value.svg_b} />
+          <div>{value.title}</div>
         </div>
       ))}
     </div>

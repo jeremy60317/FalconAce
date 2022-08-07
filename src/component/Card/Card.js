@@ -1,15 +1,24 @@
 import styles from './Card.module.scss'
+import { diffDate } from '../../utils/tools'
 
-const Card = ({ props }) => {
-  // console.log('props', props)
+const Card = ({ props, color }) => {
+  const diffTime = diffDate(props.publishedAt)
   return (
-    <div className={styles.card}>
+    <a href={props.url} target="_blank" className={styles.card}>
       <img src={props.urlToImage} alt="" />
-      <div className={styles.info}>
-        {props.author}
-        {props.title}
+      <div
+        className={styles.info}
+        style={{
+          background: `linear-gradient(to top, ${color} 70%, transparent 100%)`,
+        }}
+      >
+        <div className={styles.author}>
+          {props.author}
+          <span> {diffTime}</span>
+        </div>
+        <div className={styles.title}>{props.title}</div>
       </div>
-    </div>
+    </a>
   )
 }
 export default Card

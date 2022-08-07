@@ -2,7 +2,7 @@
 
 .homeBox {
   padding-top: 8rem;
-  // padding-bottom: 48px;
+  padding-bottom: 48px;
 }
 .navigator {
   width: 10%;
@@ -21,6 +21,28 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
+  // .left,
+  // .right {
+  //   position: absolute;
+  //   border: 1px solid gray;
+  //   width: 5%;
+  //   height: 1%;
+  //   border-radius: 50%;
+  //   font-size: 36px;
+  //   background-color: #fff;
+  //   top: 7.6%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   cursor: pointer;
+  // }
+  // .left {
+  //   left: -25px;
+  // }
+  // .right {
+  //   right: -25px;
+  // }
   .title {
     margin-top: 1%;
     width: 100%;
@@ -44,12 +66,99 @@
   }
   .newsBox {
     width: 100%;
-    outline: 1px solid green;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     box-sizing: border-box;
-    // padding-bottom: 3%;
-    // padding: 0.5%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+    .left,
+    .right {
+      position: absolute;
+      border: 1px solid gray;
+      width: 5%;
+      height: 7.567%;
+      border-radius: 50%;
+      font-size: 36px;
+      background-color: #fff;
+      top: 45%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 99;
+    }
+    .left {
+      left: 0px;
+    }
+    .right {
+      right: 0px;
+    }
+    .hotNewsBox {
+      position: relative;
+      width: 100%;
+      display: flex;
+      position: relative;
+      .newBoxItm {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        width: 100%;
+      }
+    }
+  }
+  .moreNewsBox {
+    width: 100%;
+    box-sizing: border-box;
+    .moreNewsItem {
+      text-decoration: none;
+      &:hover .titleText {
+        text-decoration: underline;
+      }
+      color: black;
+      display: flex;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid gray;
+      .moreNewsTitle {
+        width: 70%;
+        .titleText {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .descriptionText {
+          font-size: 14px;
+          color: #666;
+        }
+        .authorText {
+          font-size: 14px;
+          color: #767676;
+        }
+      }
+      .imageBox {
+        width: 30%;
+        box-sizing: border-box;
+        overflow: hidden;
+        border-radius: 20px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .NewsPage {
+    .moreNews {
+      &:after {
+        width: 80%;
+      }
+    }
   }
 }

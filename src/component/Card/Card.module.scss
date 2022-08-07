@@ -2,7 +2,7 @@
 
 .card {
   position: relative;
-  width: 270px;
+  width: 30%;
   height: 270px;
   outline: 1px solid red;
   box-sizing: border-box;
@@ -11,6 +11,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  margin-right: 3.33333%;
+  margin-bottom: 3.33333%;
   img {
     width: 200%;
     // height: 100%;

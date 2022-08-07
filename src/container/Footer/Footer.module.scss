@@ -1,0 +1,24 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  overflow: hidden;
+  box-sizing: border-box;
+  position: sticky;
+  background-color: white;
+  bottom: 0;
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #666;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  .urlBox {
+    width: 80%;
+    a {
+      margin-right: 2%;
+      text-decoration: none;
+      color: #666;
+    }
+  }
+}

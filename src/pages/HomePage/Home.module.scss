@@ -2,6 +2,7 @@
 
 .homeBox {
   padding-top: 8rem;
+  // padding-bottom: 48px;
 }
 .navigator {
   width: 10%;
@@ -14,8 +15,41 @@
   // }
 }
 .NewsPage {
-  width: 90%;
-  padding: 20px;
-  margin-left: 10%;
-  height: calc(800vh - 8rem);
+  width: 70%;
+  box-sizing: border-box;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  .title {
+    margin-top: 1%;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: #444;
+    position: relative;
+  }
+  .moreNews {
+    &:after {
+      position: absolute;
+      width: 90%;
+      content: '';
+      height: 1px;
+      background-color: #444;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+  .newsBox {
+    width: 100%;
+    outline: 1px solid green;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+    // padding-bottom: 3%;
+    // padding: 0.5%;
+  }
 }

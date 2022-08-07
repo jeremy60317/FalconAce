@@ -1,7 +1,7 @@
 import styles from './Card.module.scss'
 
 const Card = ({ props }) => {
-  console.log('props', props)
+  // console.log('props', props)
   return (
     <div className={styles.card}>
       <img src={props.urlToImage} alt="" />

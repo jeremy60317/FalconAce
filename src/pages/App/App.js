@@ -5,6 +5,7 @@ import * as AppActions from '../../actions/AppActions'
 import Home from '../HomePage/Home'
 import Nav from '../../container/Nav/Navigator'
 import Header from '../../container/Header/Header'
+import Footer from '../../container/Footer/Footer'
 import Layout from '../../component/Layout/Layout'
 import pathName from '../../utils/path'
 import navObj from '../../utils/navObject'
@@ -41,6 +42,7 @@ function App() {
             index
             path={pathName.Home}
             element={<Home page={pathName.Home} />}
+            onClick={() => console.log('click')}
           />
           <Route
             path={pathName.global}
@@ -64,6 +66,7 @@ function App() {
           />
         </Routes>
       </div>
+      <Footer />
       {/* <Modal open={openModal}></Modal> */}
     </Layout>
   )

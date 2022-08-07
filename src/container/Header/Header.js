@@ -1,8 +1,5 @@
 import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import * as AppActions from '../../actions/AppActions.js'
-import pathName from '../../utils/path'
 import style from './Header.module.scss'
 import microphonePng from '../../static/icons8-microphone-24.png'
 import searchSvg from '../../static/icons8-search.svg'
@@ -32,8 +29,6 @@ const SearchInput = () => {
 
 const Header = () => {
   let navigate = useNavigate()
-  const dispatch = useDispatch()
-  const AppReducer = useSelector((state) => state.AppReducer)
 
   function toPageType(type = '') {
     navigate(`/${type}`)

@@ -4,7 +4,12 @@ import { diffDate } from '../../utils/tools'
 const Card = ({ props, color }) => {
   const diffTime = diffDate(props.publishedAt)
   return (
-    <a href={props.url} target="_blank" className={styles.card}>
+    <a
+      href={props.url}
+      rel="noreferrer"
+      target="_blank"
+      className={styles.card}
+    >
       <img src={props.urlToImage} alt="" />
       <div
         className={styles.info}

@@ -10,7 +10,7 @@ const NewsPage = ({ page }) => {
   const [nowHotPage, setNowHotPage] = useState(0)
   const AppReducer = useSelector((state) => state.AppReducer)
   const {
-    list: { articles, hotPageNews, otherNews },
+    list: { hotPageNews, otherNews },
   } = AppReducer
 
   useEffect(() => {
@@ -43,8 +43,8 @@ const NewsPage = ({ page }) => {
           style={{ left: `-${nowHotPage * 100}%`, transition: 'left .5s' }}
         >
           {hotPageNews &&
-            hotPageNews.map((hotPage) => (
-              <div className={styles.newBoxItm}>
+            hotPageNews.map((hotPage, hotPageIdx) => (
+              <div className={styles.newBoxItm} key={hotPageIdx}>
                 {hotPage.map((itm, idx) => (
                   <Card props={itm} key={idx} color={color[idx]} />
                 ))}
@@ -72,12 +72,12 @@ const NewsPage = ({ page }) => {
         <React.Fragment>
           <div className={`${styles.title} ${styles.moreNews}`}>更多新聞</div>
           <div className={styles.moreNewsBox}>
-            {otherNews.map((itm) => (
+            {otherNews.map((itm, idx) => (
               <a
                 href={itm.url}
                 target="_blank"
                 className={styles.moreNewsItem}
-                key={itm.title}
+                key={idx}
               >
                 <div className={styles.moreNewsTitle}>
                   <div className={styles.titleText}>{itm.title}</div>
@@ -102,8 +102,6 @@ const NewsPage = ({ page }) => {
 }
 
 function Home({ page }) {
-  const AppReducer = useSelector((state) => state.AppReducer)
-  const { list } = AppReducer
   return (
     <div className={styles.homeBox}>
       <NewsPage page={page}></NewsPage>

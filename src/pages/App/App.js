@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 import * as AppActions from '../../actions/AppActions'
@@ -8,16 +8,19 @@ import Header from '../../container/Header/Header'
 import Footer from '../../container/Footer/Footer'
 import Layout from '../../component/Layout/Layout'
 import pathName from '../../utils/path'
-import navObj from '../../utils/navObject'
 import './App.scss'
 
 function App() {
+  const [clickType, setClickType] = useState('')
   const dispatch = useDispatch()
   const AppReducer = useSelector((state) => state.AppReducer)
-  const { loading, openModal } = AppReducer
+  const { loading } = AppReducer
 
   useEffect(() => {
     dispatch(AppActions.fetchInitialApiSaga())
+    if (localStorage.getItem('clickType')) {
+      setClickType(localStorage.getItem('clickType'))
+    }
   }, [])
 
   if (loading) {
@@ -36,13 +39,12 @@ function App() {
     <Layout>
       <Header />
       <div>
-        <Nav />
+        <Nav propsClickType={clickType} />
         <Routes>
           <Route
             index
             path={pathName.Home}
             element={<Home page={pathName.Home} />}
-            onClick={() => console.log('click')}
           />
           <Route
             path={pathName.global}

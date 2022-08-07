@@ -1,13 +1,7 @@
 import * as actionTypes from '../constants'
 
 const INITIAL_STATE = {
-  openModal: false,
-  modalType: '',
-  auth: {},
-  loginStatus: false,
-  list: { data: [], link: {}, meta: {} },
-  favorList: { data: [], link: {}, meta: {} },
-  selectedList: 0,
+  list: {},
 }
 
 export default (state = INITIAL_STATE, action) => {

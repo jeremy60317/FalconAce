@@ -1,14 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './Navigator.module.scss'
 import navObj from '../../utils/navObject'
 
-const Navigator = (type) => {
+const Navigator = ({ propsClickType }) => {
   const [clickType, setClickType] = useState('')
+  useEffect(() => {
+    if (propsClickType !== '') {
+      onClickNav(
+        propsClickType,
+        propsClickType === 'home' ? '' : propsClickType
+      )
+    }
+  }, [propsClickType])
   let navigate = useNavigate()
   function onClickNav(key, urlTo) {
     setClickType(key)
     toPageType(urlTo)
+    localStorage.setItem('clickType', key)
   }
   function toPageType(type = '') {
     navigate(`/${type}`)

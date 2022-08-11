@@ -4,7 +4,9 @@ import styles from './Navigator.module.scss'
 import navObj from '../../utils/navObject'
 
 const Navigator = ({ propsClickType }) => {
+  let navigate = useNavigate()
   const [clickType, setClickType] = useState('')
+
   useEffect(() => {
     if (propsClickType !== '') {
       onClickNav(
@@ -13,15 +15,17 @@ const Navigator = ({ propsClickType }) => {
       )
     }
   }, [propsClickType])
-  let navigate = useNavigate()
+
   function onClickNav(key, urlTo) {
     setClickType(key)
     toPageType(urlTo)
-    localStorage.setItem('clickType', key)
+    sessionStorage.setItem('clickType', key)
   }
+
   function toPageType(type = '') {
     navigate(`/${type}`)
   }
+
   return (
     <div className={styles.navigator}>
       {Object.entries(navObj).map(([key, value], idx) => (

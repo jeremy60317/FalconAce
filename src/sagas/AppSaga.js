@@ -1,5 +1,6 @@
-import { call, put } from 'redux-saga/effects'
+import { call, put, delay } from 'redux-saga/effects'
 import { setLoading, fetchListApiSuccess } from '../actions/AppActions'
+import fakeData from '../utils/fakeData2.json'
 
 const uri =
   'https://newsapi.org/v2/top-headlines?country=tw&apiKey=c14ac1132c5b4fabac7ee0bb1818ea79'
@@ -13,10 +14,13 @@ export function* fetchInitialApiSaga(action) {
 
 //List資料
 export function* fetchListApiSaga(action) {
-  const res = yield call(fetch, uri)
-  const json = yield res.json()
+  // const res = yield call(fetch, uri)
+  // const json = yield res.json()
 
-  if (res && res.status === 200) {
-    yield put(fetchListApiSuccess(json))
+  yield delay(3000)
+  const res = fakeData
+
+  if (res && res.status === 'ok') {
+    yield put(fetchListApiSuccess(res))
   }
 }

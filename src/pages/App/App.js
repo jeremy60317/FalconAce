@@ -7,6 +7,7 @@ import Nav from '../../container/Nav/Navigator'
 import Header from '../../container/Header/Header'
 import Footer from '../../container/Footer/Footer'
 import Layout from '../../component/Layout/Layout'
+import Loading from '../../component/Loading/Loading'
 import pathName from '../../utils/path'
 import './App.scss'
 
@@ -18,21 +19,13 @@ function App() {
 
   useEffect(() => {
     dispatch(AppActions.fetchInitialApiSaga())
-    if (localStorage.getItem('clickType')) {
-      setClickType(localStorage.getItem('clickType'))
+    if (sessionStorage.getItem('clickType')) {
+      setClickType(sessionStorage.getItem('clickType'))
     }
   }, [])
 
   if (loading) {
-    return (
-      <div className="loading">
-        <div className="pointBox">
-          <div className="point"></div>
-          <div className="point"></div>
-          <div className="point"></div>
-        </div>
-      </div>
-    )
+    return <Loading />
   }
 
   return (

@@ -5,38 +5,25 @@ import styles from './Home.module.scss'
 import navObj from '../../utils/navObject'
 import { diffDate } from '../../utils/tools'
 
+function randomBGC() {
+  const letters = '0123456789ABCDEF'.split('')
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)]
+  }
+  return color
+}
+
 const NewsPage = ({ page }) => {
-  const [title, setTitle] = useState('')
   const [nowHotPage, setNowHotPage] = useState(0)
   const AppReducer = useSelector((state) => state.AppReducer)
   const {
     list: { hotPageNews, otherNews },
   } = AppReducer
 
-  useEffect(() => {
-    setTitle(navObj[page] ? navObj[page].title : '熱門報導')
-  }, [page])
-
-  function onClickHotPageBtn(type) {
-    if (type === 'left') {
-      setNowHotPage(nowHotPage - 1)
-    } else {
-      setNowHotPage(nowHotPage + 1)
-    }
-  }
-
-  const color = [
-    '#193368',
-    '#726959',
-    '#554D21',
-    '#503E3F',
-    '#C22833',
-    '#252523',
-  ]
-
   return (
     <div className={styles.NewsPage}>
-      <div className={styles.title}>{title}</div>
+      <div className={styles.title}>{navObj[page].title}</div>
       <div className={styles.newsBox}>
         <div
           className={styles.hotNewsBox}
@@ -46,7 +33,7 @@ const NewsPage = ({ page }) => {
             hotPageNews.map((hotPage, hotPageIdx) => (
               <div className={styles.newBoxItm} key={hotPageIdx}>
                 {hotPage.map((itm, idx) => (
-                  <Card props={itm} key={idx} color={color[idx]} />
+                  <Card props={itm} key={idx} color={randomBGC()} />
                 ))}
               </div>
             ))}
@@ -54,7 +41,7 @@ const NewsPage = ({ page }) => {
         {nowHotPage !== 0 && (
           <div
             className={styles.left}
-            onClick={() => onClickHotPageBtn('left')}
+            onClick={() => setNowHotPage(nowHotPage - 1)}
           >
             {`<`}
           </div>
@@ -62,7 +49,7 @@ const NewsPage = ({ page }) => {
         {hotPageNews && nowHotPage !== hotPageNews.length - 1 && (
           <div
             className={styles.right}
-            onClick={() => onClickHotPageBtn('right')}
+            onClick={() => setNowHotPage(nowHotPage + 1)}
           >
             {`>`}
           </div>

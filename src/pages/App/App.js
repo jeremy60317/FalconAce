@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import * as AppActions from '../../actions/AppActions'
 import Home from '../HomePage/Home'
 import Nav from '../../container/Nav/Navigator'
@@ -12,17 +13,26 @@ import pathName from '../../utils/path'
 import './App.scss'
 
 function App() {
-  const [clickType, setClickType] = useState('')
+  let navigate = useNavigate()
+  const [navType, setNavType] = useState('')
   const dispatch = useDispatch()
   const AppReducer = useSelector((state) => state.AppReducer)
   const { loading } = AppReducer
+  const url = new URL(window.location.href)
 
   useEffect(() => {
-    dispatch(AppActions.fetchInitialApiSaga())
-    if (sessionStorage.getItem('clickType')) {
-      setClickType(sessionStorage.getItem('clickType'))
-    }
+    const pathName = url.pathname.split('/')[1]
+    setNavType(pathName)
   }, [])
+
+  useEffect(() => {
+    dispatch(AppActions.fetchInitialApiSaga(navType))
+  }, [navType])
+
+  const handleClickNav = (type) => {
+    setNavType(type)
+    navigate(`/${type}`)
+  }
 
   if (loading) {
     return <Loading />
@@ -32,33 +42,21 @@ function App() {
     <Layout>
       <Header />
       <div>
-        <Nav propsClickType={clickType} />
+        <Nav
+          propsNavType={navType}
+          handleClickNav={(type) => handleClickNav(type)}
+        />
         <Routes>
-          <Route
-            index
-            path={pathName.Home}
-            element={<Home page={pathName.Home} />}
-          />
-          <Route
-            path={pathName.global}
-            element={<Home page={pathName.global} />}
-          />
-          <Route
-            path={pathName.business}
-            element={<Home page={pathName.business} />}
-          />
-          <Route
-            path={pathName.entertainment}
-            element={<Home page={pathName.entertainment} />}
-          />
-          <Route
-            path={pathName.sport}
-            element={<Home page={pathName.sport} />}
-          />
-          <Route
-            path={pathName.technology}
-            element={<Home page={pathName.technology} />}
-          />
+          {Object.entries(pathName).map(([key, value], idx) => {
+            return (
+              <Route
+                index={idx === 0}
+                path={value}
+                element={<Home page={key} />}
+                key={key}
+              />
+            )
+          })}
         </Routes>
       </div>
       <Footer />

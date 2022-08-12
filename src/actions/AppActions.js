@@ -1,7 +1,8 @@
 import * as actionTypes from '../constants'
 
-export const fetchInitialApiSaga = () => ({
+export const fetchInitialApiSaga = (pathName) => ({
   type: actionTypes.FETCH_INITIAL_API_SAGA,
+  pathName,
 })
 
 export const fetchListApiSaga = (page) => ({

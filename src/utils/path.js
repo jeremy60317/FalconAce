@@ -1,5 +1,5 @@
 const pathName = {
-  Home: '',
+  home: '',
   global: 'global',
   business: 'business',
   entertainment: 'entertainment',
